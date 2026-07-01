@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="fr" id="cv-html">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jézébel ASSAD — CV</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap");
+  body,
+  html {
+    margin: 0;
+    height: 100%;
+  }
+  .cv1-page {
+    background: #e8c9ac;
+    padding: 20px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 1800px;
+    box-sizing: border-box;
+  }
+  .cv1-scale-wrap {
+    transform-origin: center center;
+    will-change: transform;
+  }
+  .cv1-tilt-wrap {
+    transform-style: preserve-3d;
+    transition: transform 0.18s ease-out;
+    will-change: transform;
+  }
+  .cv1 {
+    font-family: "Inter", sans-serif;
+    background: #fdf6ee;
+    color: #2c1a0e;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 44px rgba(44, 26, 14, 0.22);
+  }
+  .cv1-header {
+    background: #c05c2a;
+    padding: 36px 56px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cv1-holo {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgba(255, 210, 170, 0.16) 42%,
+      rgba(255, 255, 255, 0.22) 48%,
+      rgba(180, 255, 235, 0.14) 54%,
+      transparent 66%
+    );
+    background-size: 250% 250%;
+    background-position: var(--holo-x, 50%) var(--holo-y, 50%);
+    mix-blend-mode: screen;
+  }
+  .cv1-tilt-wrap:hover .cv1-holo {
+    opacity: 1;
+  }
+  .cv1-name {
+    font-family: "Playfair Display", serif;
+    font-size: 46px;
+    font-weight: 700;
+    color: #fdf6ee;
+    letter-spacing: -1px;
+    margin: 0;
+    line-height: 1;
+    position: relative;
+  }
+  .cv1-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #f5c4a0;
+    margin: 7px 0 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .cv1-tagline {
+    font-size: 13px;
+    color: #f5dfd0;
+    line-height: 1.55;
+    max-width: 760px;
+    font-weight: 300;
+    position: relative;
+  }
+  .cv1-body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+  }
+  .cv1-sidebar {
+    background: #2c1a0e;
+    padding: 32px 28px;
+  }
+  .cv1-main {
+    padding: 36px 48px;
+    background: #fdf6ee;
+    display: flex;
+    flex-direction: column;
+  }
+  .cv1-s-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #c05c2a;
+    margin: 0 0 10px;
+  }
+  .cv1-s-block {
+    margin-bottom: 24px;
+  }
+  .cv1-s-item {
+    font-size: 12px;
+    color: #e8d5c0;
+    line-height: 1.8;
+  }
+  .cv1-s-item a {
+    color: #f5c4a0;
+    text-decoration: none;
+  }
+  .cv1-skill-group {
+    margin-bottom: 6px;
+  }
+  .cv1-skill-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #f5c4a0;
+    margin: 0 0 3px;
+  }
+  .cv1-skill-list {
+    font-size: 11px;
+    color: #c9b09a;
+    line-height: 1.7;
+  }
+  .cv1-tag {
+    display: inline-block;
+    background: #4a2d1a;
+    color: #f5c4a0;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin: 2px 2px 0 0;
+  }
+  .cv1-tag-game {
+    display: inline-block;
+    background: #6b3a1a;
+    color: #ffe0c0;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin: 2px 2px 0 0;
+  }
+  .cv1-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+  .cv1-lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c05c2a;
+    flex-shrink: 0;
+  }
+  .cv1-lang-text {
+    font-size: 11px;
+    color: #e8d5c0;
+  }
+  .cv1-section-title {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #c05c2a;
+    border-bottom: 2px solid #e8c9b0;
+    padding-bottom: 8px;
+    margin: 0 0 24px;
+  }
+  .cv1-exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+  }
+  .cv1-exp-role {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c1a0e;
+    margin: 0;
+  }
+  .cv1-exp-place {
+    font-size: 12px;
+    color: #c05c2a;
+    font-weight: 500;
+    margin: 3px 0;
+  }
+  .cv1-exp-date {
+    font-size: 11px;
+    color: #9e7a60;
+    margin: 0 0 8px;
+  }
+  .cv1-exp-desc {
+    font-size: 12px;
+    color: #4a3020;
+    line-height: 1.75;
+    margin: 0;
+  }
+  .cv1-edu-degree {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c1a0e;
+    line-height: 1.4;
+  }
+  .cv1-edu-school {
+    font-size: 12px;
+    color: #c05c2a;
+    margin-top: 3px;
+  }
+  .cv1-edu-year {
+    font-size: 11px;
+    color: #9e7a60;
+    margin-top: 2px;
+  }
+  .cv1-section {
+    margin-bottom: 40px;
+  }
+  .cv1-section:last-child {
+    margin-bottom: 0;
+  }
+  .cv1-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 40px;
+  }
+
+  /* ---- language visibility ---- */
+  [data-lang="en"] .lang-fr { display: none !important; }
+  [data-lang="fr"] .lang-en { display: none !important; }
+
+  /* ---- controls (top right) ---- */
+  .cv1-controls {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    gap: 10px;
+  }
+  .cv1-pill-btn {
+    background: #2c1a0e;
+    border: 1px solid #c05c2a;
+    color: #fdf6ee;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 40px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    background: rgba(44, 26, 14, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+    user-select: none;
+  }
+  .cv1-pill-btn:hover {
+    background: #c05c2a;
+    border-color: #f5c4a0;
+    color: #fff;
+    transform: scale(1.02);
+  }
+  .cv1-pill-btn:active {
+    transform: scale(0.97);
+  }
+  a.cv1-pill-btn {
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* ---- narrow phones: reflow to a compact single column ---- */
+  @media (max-width: 640px) {
+    .cv1 {
+      max-width: 92vw;
+    }
+    .cv1-header {
+      padding: 24px 24px 20px;
+    }
+    .cv1-name {
+      font-size: 32px;
+    }
+    .cv1-title {
+      font-size: 13px;
+    }
+    .cv1-tagline {
+      font-size: 12px;
+    }
+    .cv1-body {
+      grid-template-columns: 1fr;
+    }
+    .cv1-sidebar {
+      padding: 22px 20px;
+    }
+    .cv1-main {
+      padding: 24px 22px;
+    }
+    .cv1-exp-grid,
+    .cv1-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .cv1-section {
+      margin-bottom: 26px;
+    }
+    .cv1-controls {
+      top: 12px;
+      right: 12px;
+    }
+    .cv1-pill-btn {
+      padding: 8px 12px;
+      font-size: 11px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="cv1-controls">
+  <button class="cv1-pill-btn" id="tiltToggleBtn">⏣ Tilt: ON</button>
+  <button class="cv1-pill-btn" id="langToggleBtn">FR / EN</button>
+  <a class="cv1-pill-btn cv1-download-btn" id="downloadBtn" href="CV_FR.pdf" download="CV_AzAz_FR.pdf">⭳ Télécharger</a>
+</div>
+
+<div class="cv1-page" id="cv1-page" data-lang="fr">
+  <div class="cv1-scale-wrap" id="cv1-scale-wrap">
+    <div class="cv1-tilt-wrap" id="cv1-tilt">
+      <div class="cv1" id="cv1-card">
+        <div class="cv1-header" id="cv1-header">
+          <div class="cv1-holo" id="cv1-holo"></div>
+          <div class="cv1-name">Jézébel ASSAD</div>
+          <div class="cv1-title">Full Stack Developer</div>
+          <div class="cv1-tagline">
+            <span class="lang-fr">Passionné par les nouvelles technologies, la bio-mécanique et le
+            digital. Motivé pour développer ses capacités en milieu professionnel,
+            avec une appétence pour le jeu vidéo et les logiciels embarqués.</span>
+            <span class="lang-en">Passionate about new technologies, biomechanics and digital
+            innovation. Driven to grow professionally, with a strong interest in
+            video games and embedded software.</span>
+          </div>
+        </div>
+        <div class="cv1-body">
+          <div class="cv1-sidebar">
+            <div class="cv1-s-block">
+              <div class="cv1-s-label">Contact</div>
+              <div class="cv1-s-item">0696 69 88 70</div>
+              <div class="cv1-s-item">jezebel.assad@outlook.com</div>
+              <div class="cv1-s-item">
+                <a href="#">jezebelassad.wixsite.com/developer</a>
+              </div>
+            </div>
+            <div class="cv1-s-block">
+              <div class="cv1-s-label">
+                <span class="lang-fr">Compétences techniques</span>
+                <span class="lang-en">Technical Skills</span>
+              </div>
+              <div class="cv1-skill-group">
+                <div class="cv1-skill-title">Architecture</div>
+                <div class="cv1-skill-list">
+                  <span class="lang-fr">Web, Front/Back-end<br />Moteur de jeu 3D<br />SOLID, MVC, OOP,
+                  ORM</span>
+                  <span class="lang-en">Web, Front/Back-end<br />3D Game Engine<br />SOLID, MVC, OOP,
+                  ORM</span>
+                </div>
+              </div>
+              <div class="cv1-skill-group" style="margin-top: 10px">
+                <div class="cv1-skill-title">Web</div>
+                <div>
+                  <span class="cv1-tag">Git</span
+                  ><span class="cv1-tag">HTML5</span
+                  ><span class="cv1-tag">Tailwind CSS</span>
+                  <span class="cv1-tag">JS/TS</span
+                  ><span class="cv1-tag">NodeJS</span
+                  ><span class="cv1-tag">React</span>
+                  <span class="cv1-tag">SQL</span
+                  ><span class="cv1-tag">NoSQL</span
+                  ><span class="cv1-tag">CI/CD</span>
+                  <span class="cv1-tag">Laravel</span
+                  ><span class="cv1-tag">Figma</span>
+                </div>
+              </div>
+              <div class="cv1-skill-group" style="margin-top: 10px">
+                <div class="cv1-skill-title">Gamedev</div>
+                <div>
+                  <span class="cv1-tag-game">C</span
+                  ><span class="cv1-tag-game">C++</span
+                  ><span class="cv1-tag-game">C#</span>
+                  <span class="cv1-tag-game">UE4/5</span
+                  ><span class="cv1-tag-game">Unity</span
+                  ><span class="cv1-tag-game">Vulkan</span>
+                  <span class="cv1-tag-game">OpenGL</span
+                  ><span class="cv1-tag-game">Perforce</span>
+                </div>
+              </div>
+              <div class="cv1-skill-group" style="margin-top: 10px">
+                <div class="cv1-skill-title">
+                  <span class="lang-fr">Méthodes</span>
+                  <span class="lang-en">Methods</span>
+                </div>
+                <div class="cv1-skill-list">
+                  AGILE · Discord · Teams<br />Trello · Asana
+                </div>
+              </div>
+            </div>
+            <div class="cv1-s-block">
+              <div class="cv1-s-label">Soft Skills</div>
+              <div class="cv1-s-item">
+                <span class="lang-fr">Esprit créatif · Organisé<br />Gestion du temps<br />Esprit
+                d'équipe · Motivé<br />Consciencieux</span>
+                <span class="lang-en">Creative mindset · Organized<br />Time management<br />Team
+                spirit · Motivated<br />Conscientious</span>
+              </div>
+            </div>
+            <div class="cv1-s-block">
+              <div class="cv1-s-label">
+                <span class="lang-fr">Langues</span>
+                <span class="lang-en">Languages</span>
+              </div>
+              <div class="cv1-lang">
+                <div class="cv1-lang-dot"></div>
+                <div class="cv1-lang-text">
+                  <span class="lang-fr">Français — natif</span>
+                  <span class="lang-en">French — native</span>
+                </div>
+              </div>
+              <div class="cv1-lang">
+                <div class="cv1-lang-dot" style="background: #e8a070"></div>
+                <div class="cv1-lang-text">
+                  <span class="lang-fr">Anglais — professionnel</span>
+                  <span class="lang-en">English — professional</span>
+                </div>
+              </div>
+              <div class="cv1-lang">
+                <div class="cv1-lang-dot" style="background: #4a2d1a"></div>
+                <div class="cv1-lang-text">
+                  <span class="lang-fr">Espagnol — notions</span>
+                  <span class="lang-en">Spanish — basic notions</span>
+                </div>
+              </div>
+              <div class="cv1-lang">
+                <div class="cv1-lang-dot" style="background: #4a2d1a"></div>
+                <div class="cv1-lang-text">
+                  <span class="lang-fr">Japonais — notions</span>
+                  <span class="lang-en">Japanese — basic notions</span>
+                </div>
+              </div>
+              <div class="cv1-lang">
+                <div class="cv1-lang-dot" style="background: #3a2415"></div>
+                <div class="cv1-lang-text">
+                  <span class="lang-fr">Portugais — notions de base</span>
+                  <span class="lang-en">Portuguese — basic notions</span>
+                </div>
+              </div>
+            </div>
+            <div class="cv1-s-block">
+              <div class="cv1-s-label">
+                <span class="lang-fr">Centres d'intérêt</span>
+                <span class="lang-en">Interests</span>
+              </div>
+              <div class="cv1-s-item">
+                <span class="lang-fr">Nouvelles technologies<br />Jeux vidéos<br />Culture nippone<br />Musique,
+                Hip-Hop<br />JDM · Arts Martiaux</span>
+                <span class="lang-en">New technologies<br />Video games<br />Japanese culture<br />Music,
+                Hip-Hop<br />Anime/Manga · Martial Arts</span>
+              </div>
+            </div>
+          </div>
+          <div class="cv1-main">
+            <div class="cv1-section">
+              <div class="cv1-section-title">
+                <span class="lang-fr">Expérience</span>
+                <span class="lang-en">Experience</span>
+              </div>
+              <div class="cv1-exp-grid">
+                <div class="cv1-exp-item">
+                  <div class="cv1-exp-role">
+                    <span class="lang-fr">Employé Polyvalent</span>
+                    <span class="lang-en">Multi-skilled Employee</span>
+                  </div>
+                  <div class="cv1-exp-place">Habitations Les II Volets</div>
+                  <div class="cv1-exp-date">
+                    <span class="lang-fr">Décembre 2022 — Février 2024</span>
+                    <span class="lang-en">December 2022 — February 2024</span>
+                  </div>
+                  <div class="cv1-exp-desc">
+                    <span class="lang-fr">Technicien organisation du réseau informatique, jardinage,
+                    plomberie, aide aux résidents dans les deux bâtiments de la
+                    résidence.</span>
+                    <span class="lang-en">IT network technician and organization, gardening,
+                    plumbing, and resident assistance across both residence buildings.</span>
+                  </div>
+                </div>
+                <div class="cv1-exp-item">
+                  <div class="cv1-exp-role">Développeur Unity — AR — ARM</div>
+                  <div class="cv1-exp-place">HappyHotels</div>
+                  <div class="cv1-exp-date">
+                    <span class="lang-fr">Juillet 2021 — Février 2022</span>
+                    <span class="lang-en">July 2021 — February 2022</span>
+                  </div>
+                  <div class="cv1-exp-desc">
+                    <span class="lang-fr">Réalité augmentée pour HoloLens 2 et mobile sur Unity.
+                    Applications pour la restauration et l'hôtellerie à Montréal.
+                    C# · HoloLens2 · Unity · iOS · Android</span>
+                    <span class="lang-en">Augmented reality for HoloLens 2 and mobile using Unity.
+                    Applications for restaurants and hospitality in Montreal.
+                    C# · HoloLens2 · Unity · iOS · Android</span>
+                  </div>
+                </div>
+                <div class="cv1-exp-item">
+                  <div class="cv1-exp-role">
+                    <span class="lang-fr">Développement d'un Moteur de Jeu</span>
+                    <span class="lang-en">Game Engine Development</span>
+                  </div>
+                  <div class="cv1-exp-place">Isart DIGITAL Montréal</div>
+                  <div class="cv1-exp-date">
+                    <span class="lang-fr">Janvier 2021 — Juin 2021</span>
+                    <span class="lang-en">January 2021 — June 2021</span>
+                  </div>
+                  <div class="cv1-exp-desc">
+                    <span class="lang-fr">Équipe de 3 programmeurs. Création d'un moteur de jeu 3D from
+                    scratch. C++ · Vulkan · PhysX · FMOD · ImGUI · TinyXML</span>
+                    <span class="lang-en">Team of 3 programmers. Built a 3D game engine from
+                    scratch. C++ · Vulkan · PhysX · FMOD · ImGUI · TinyXML</span>
+                  </div>
+                </div>
+                <div class="cv1-exp-item">
+                  <div class="cv1-exp-role">HOMAJAM</div>
+                  <div class="cv1-exp-place">HOMA Games</div>
+                  <div class="cv1-exp-date">
+                    <span class="lang-fr">Décembre 2020 — Janvier 2021</span>
+                    <span class="lang-en">December 2020 — January 2021</span>
+                  </div>
+                  <div class="cv1-exp-desc">
+                    <span class="lang-fr">Équipe de 3, développement d'un jeu mobile sur le thème du
+                    ragdoll, adapté aux plateformes de téléchargement. C# · Unity</span>
+                    <span class="lang-en">Team of 3, developed a ragdoll-themed mobile game adapted
+                    for app store platforms. C# · Unity</span>
+                  </div>
+                </div>
+                <div class="cv1-exp-item">
+                  <div class="cv1-exp-role">Global Game Jam</div>
+                  <div class="cv1-exp-place">Isart DIGITAL Montréal</div>
+                  <div class="cv1-exp-date">
+                    <span class="lang-fr">Janvier 2020 — Février 2020</span>
+                    <span class="lang-en">January 2020 — February 2020</span>
+                  </div>
+                  <div class="cv1-exp-desc">
+                    <span class="lang-fr">Équipe de 8 personnes (programmeurs, ingénieur du son,
+                    designer de jeu). Jeu conçu en 48h sur le thème « Réparation ».
+                    C# · Unity</span>
+                    <span class="lang-en">Team of 8 (programmers, sound engineer, game designer).
+                    Game built in 48 hours on the theme "Repair". C# · Unity</span>
+                  </div>
+                </div>
+                <div class="cv1-exp-item">
+                  <div class="cv1-exp-role">
+                    <span class="lang-fr">Administrateur Réseau et Informatique</span>
+                    <span class="lang-en">Network &amp; IT Administrator</span>
+                  </div>
+                  <div class="cv1-exp-place">
+                    <span class="lang-fr">Mairie de Fort de France</span>
+                    <span class="lang-en">Fort-de-France City Hall</span>
+                  </div>
+                  <div class="cv1-exp-date">
+                    <span class="lang-fr">Février 2015 — Mars 2015</span>
+                    <span class="lang-en">February 2015 — March 2015</span>
+                  </div>
+                  <div class="cv1-exp-desc">
+                    <span class="lang-fr">Assistance dans la maintenance de la présence en ligne de la
+                    mairie, télécommunication et réseau d'imprimantes.</span>
+                    <span class="lang-en">Assisted in maintaining the city hall's online presence,
+                    telecommunications, and printer network.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cv1-section">
+              <div class="cv1-section-title">
+                <span class="lang-fr">Formation</span>
+                <span class="lang-en">Education</span>
+              </div>
+              <div class="cv1-footer-grid">
+                <div class="cv1-edu-item">
+                  <div class="cv1-edu-degree">
+                    <span class="lang-fr">Masso-Kinésithérapeute</span>
+                    <span class="lang-en">Massage Therapist / Kinesiotherapist</span>
+                  </div>
+                  <div class="cv1-edu-school">
+                    Académie de massage scientifique
+                  </div>
+                  <div class="cv1-edu-year">2024 — 2025</div>
+                </div>
+                <div class="cv1-edu-item">
+                  <div class="cv1-edu-degree">
+                    <span class="lang-fr">AEC — Programmeur / Développeur de Moteur de Jeu</span>
+                    <span class="lang-en">AEC — Game Engine Programmer / Developer</span>
+                  </div>
+                  <div class="cv1-edu-school">ISART Digital Montréal</div>
+                  <div class="cv1-edu-year">2019 — 2021</div>
+                </div>
+                <div class="cv1-edu-item">
+                  <div class="cv1-edu-degree">
+                    <span class="lang-fr">Année Préparatoire</span>
+                    <span class="lang-en">Preparatory Year</span>
+                  </div>
+                  <div class="cv1-edu-school">Polytechnique Montréal</div>
+                  <div class="cv1-edu-year">2018 — 2019</div>
+                </div>
+                <div class="cv1-edu-item">
+                  <div class="cv1-edu-degree">
+                    <span class="lang-fr">Baccalauréat Scientifique — Spécialité ISN</span>
+                    <span class="lang-en">Scientific Baccalaureate — Computer Science (ISN)
+                    specialization</span>
+                  </div>
+                  <div class="cv1-edu-school">Lycée Bellevue, Martinique</div>
+                  <div class="cv1-edu-year">2015 — 2018</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    const page = document.getElementById("cv1-page");
+    const tilt = document.getElementById("cv1-tilt");
+    const header = document.getElementById("cv1-header");
+    const holo = document.getElementById("cv1-holo");
+    const toggleBtn = document.getElementById("tiltToggleBtn");
+    const langBtn = document.getElementById("langToggleBtn");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const card = document.getElementById("cv1-card");
+    const scaleWrap = document.getElementById("cv1-scale-wrap");
+    const htmlEl = document.getElementById("cv-html");
+
+    // tilt state
+    let tiltEnabled = true;
+
+    // max tilt angle (degrees)
+    const maxTilt = 1.69;
+
+    function updateButton() {
+      toggleBtn.textContent = tiltEnabled ? " Tilt: ON" : " Tilt: OFF";
+    }
+
+    function handleMove(e) {
+      if (!tiltEnabled) {
+        tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
+        return;
+      }
+      const rect = tilt.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      let dx = (e.clientX - cx) / (rect.width / 2);
+      let dy = (e.clientY - cy) / (rect.height / 2);
+      dx = Math.max(-1, Math.min(1, dx));
+      dy = Math.max(-1, Math.min(1, dy));
+      const rotateY = dx * maxTilt;
+      const rotateX = -dy * maxTilt;
+      tilt.style.transform =
+        "rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg)";
+
+      const hRect = header.getBoundingClientRect();
+      const hx = ((e.clientX - hRect.left) / hRect.width) * 100;
+      const hy = ((e.clientY - hRect.top) / hRect.height) * 100;
+      holo.style.setProperty("--holo-x", hx + "%");
+      holo.style.setProperty("--holo-y", hy + "%");
+    }
+
+    function handleLeave() {
+      tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
+    }
+
+    page.addEventListener("mousemove", handleMove);
+    page.addEventListener("mouseleave", handleLeave);
+
+    toggleBtn.addEventListener("click", function () {
+      tiltEnabled = !tiltEnabled;
+      updateButton();
+      if (!tiltEnabled) {
+        tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
+      }
+    });
+    updateButton();
+
+    // ---- language toggle (independent per page, no persistence) ----
+    let lang = "fr";
+    function updateLang() {
+      page.setAttribute("data-lang", lang);
+      htmlEl.setAttribute("lang", lang);
+      langBtn.textContent = lang === "fr" ? "FR / EN" : "EN / FR";
+      if (lang === "fr") {
+        downloadBtn.href = "CV_FR.pdf";
+        downloadBtn.setAttribute("download", "CV_AzAz_FR.pdf");
+        downloadBtn.textContent = "⭳ Télécharger";
+      } else {
+        downloadBtn.href = "CV_EN.pdf";
+        downloadBtn.setAttribute("download", "CV_AzAz_EN.pdf");
+        downloadBtn.textContent = "⭳ Download";
+      }
+      // content size may change after translation swap -> refit
+      requestAnimationFrame(fitToViewport);
+    }
+    langBtn.addEventListener("click", function () {
+      lang = lang === "fr" ? "en" : "fr";
+      updateLang();
+    });
+    updateLang();
+
+    // ---- scale-to-fit: keep the whole card visible, no scrolling, on any viewport ----
+    function fitToViewport() {
+      const margin = 24;
+      const availW = window.innerWidth - margin * 2;
+      const availH = window.innerHeight - margin * 2;
+      // offsetWidth/Height are layout sizes, unaffected by the transform we apply below
+      const naturalW = card.offsetWidth;
+      const naturalH = card.offsetHeight;
+      if (!naturalW || !naturalH) return;
+      let scale = Math.min(availW / naturalW, availH / naturalH);
+      scale = Math.min(scale, 1.15);
+      scale = Math.max(scale, 0.15);
+      scaleWrap.style.transform = "scale(" + scale + ")";
+    }
+
+    let resizeRaf;
+    window.addEventListener("resize", function () {
+      cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(fitToViewport);
+    });
+    window.addEventListener("orientationchange", function () {
+      setTimeout(fitToViewport, 150);
+    });
+
+    if (window.ResizeObserver) {
+      new ResizeObserver(function () {
+        fitToViewport();
+      }).observe(card);
+    }
+
+    // re-fit once web fonts have (likely) loaded, and once on full load
+    window.addEventListener("load", fitToViewport);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fitToViewport);
+    }
+    fitToViewport();
+    setTimeout(fitToViewport, 300);
+  })();
+</script>
+</body>
+</html>
