@@ -289,122 +289,43 @@
     display: inline-block;
   }
 
-  /* ==== VARIANT 2: Priority Reorder — experience first, sidebar as scannable footer ==== */
-  @media (max-width: 768px) {
-    html, body {
-      height: auto;
-    }
-    .cv1-page {
-      height: auto;
-      min-height: 100vh;
-      width: 100%;
-      overflow: visible;
-      align-items: flex-start;
-      padding: 16px 12px 32px;
-      perspective: none;
-    }
-    .cv1-tilt-wrap {
-      transform: none !important;
-      transition: none;
-    }
-    .cv1-holo {
-      display: none;
-    }
+  /* ---- narrow phones: reflow to a compact single column ---- */
+  @media (max-width: 640px) {
     .cv1 {
-      max-width: 100%;
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(44, 26, 14, 0.18);
+      max-width: 92vw;
     }
     .cv1-header {
-      padding: 26px 20px 22px;
+      padding: 24px 24px 20px;
     }
     .cv1-name {
-      font-size: 29px;
-      letter-spacing: -0.5px;
+      font-size: 32px;
     }
     .cv1-title {
       font-size: 13px;
-      letter-spacing: 1.5px;
     }
     .cv1-tagline {
-      font-size: 13px;
-      line-height: 1.6;
-      max-width: 100%;
-    }
-    /* reorder: experience & education surface first, contact/skills sidebar follows as reference */
-    .cv1-body {
-      display: flex;
-      flex-direction: column;
-      grid-template-columns: unset;
-    }
-    .cv1-main {
-      order: 1;
-      padding: 24px 20px 8px;
-    }
-    .cv1-sidebar {
-      order: 2;
-      padding: 22px 20px 28px;
-      border-top: 1px solid #4a2d1a;
-      margin-top: 8px;
-    }
-    /* sidebar becomes a denser two-column reference block since it's now secondary */
-    .cv1-sidebar .cv1-s-block {
-      margin-bottom: 20px;
-    }
-    .cv1-s-item,
-    .cv1-skill-list,
-    .cv1-lang-text {
-      font-size: 13px;
-      line-height: 1.75;
-    }
-    .cv1-skill-title {
       font-size: 12px;
     }
-    .cv1-tag,
-    .cv1-tag-game {
-      font-size: 11px;
-      padding: 3px 8px;
+    .cv1-body {
+      grid-template-columns: 1fr;
     }
-    .cv1-section-title {
-      font-size: 21px;
-      margin-bottom: 18px;
+    .cv1-sidebar {
+      padding: 22px 20px;
+    }
+    .cv1-main {
+      padding: 24px 22px;
     }
     .cv1-exp-grid,
     .cv1-footer-grid {
       grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    .cv1-exp-role {
-      font-size: 15px;
-    }
-    .cv1-exp-place {
-      font-size: 13px;
-    }
-    .cv1-exp-date {
-      font-size: 12px;
-    }
-    .cv1-exp-desc {
-      font-size: 13px;
-      line-height: 1.8;
-    }
-    .cv1-edu-degree {
-      font-size: 14px;
-    }
-    .cv1-edu-school,
-    .cv1-edu-year {
-      font-size: 12px;
+      gap: 18px;
     }
     .cv1-section {
       margin-bottom: 26px;
     }
     .cv1-controls {
-      top: 10px;
-      right: 10px;
-      gap: 6px;
-    }
-    #tiltToggleBtn {
-      display: none;
+      top: 12px;
+      right: 12px;
     }
     .cv1-pill-btn {
       padding: 8px 12px;
@@ -681,16 +602,6 @@
               <div class="cv1-footer-grid">
                 <div class="cv1-edu-item">
                   <div class="cv1-edu-degree">
-                    <span class="lang-fr">Developpeur Web et Web Mobile</span>
-                    <span class="lang-en">Web / Web Mobile Developer</span>
-                  </div>
-                  <div class="cv1-edu-school">
-                    IMFPA
-                  </div>
-                  <div class="cv1-edu-year">2026</div>
-                </div>
-                <div class="cv1-edu-item">
-                  <div class="cv1-edu-degree">
                     <span class="lang-fr">Masso-Kinésithérapeute</span>
                     <span class="lang-en">Massage Therapist / Kinesiotherapist</span>
                   </div>
@@ -747,8 +658,6 @@
 
     // tilt state
     let tiltEnabled = true;
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const isMobileLayout = () => window.matchMedia("(max-width: 768px)").matches;
 
     // max tilt angle (degrees)
     const maxTilt = 2.69;
@@ -785,10 +694,8 @@
       tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
     }
 
-    if (canHover) {
-      page.addEventListener("mousemove", handleMove);
-      page.addEventListener("mouseleave", handleLeave);
-    }
+    page.addEventListener("mousemove", handleMove);
+    page.addEventListener("mouseleave", handleLeave);
 
     toggleBtn.addEventListener("click", function () {
       tiltEnabled = !tiltEnabled;
@@ -825,10 +732,6 @@
 
     // ---- scale-to-fit: keep the whole card visible, no scrolling, on any viewport ----
     function fitToViewport() {
-      if (isMobileLayout()) {
-        scaleWrap.style.transform = "none";
-        return;
-      }
       const margin = 24;
       const availW = window.innerWidth - margin * 2;
       const availH = window.innerHeight - margin * 2;

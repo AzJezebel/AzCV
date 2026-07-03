@@ -289,7 +289,7 @@
     display: inline-block;
   }
 
-  /* ==== VARIANT 2: Priority Reorder — experience first, sidebar as scannable footer ==== */
+  /* ==== VARIANT 1: Classic Stack — natural scroll, no shrink ==== */
   @media (max-width: 768px) {
     html, body {
       height: auto;
@@ -320,7 +320,7 @@
       padding: 26px 20px 22px;
     }
     .cv1-name {
-      font-size: 29px;
+      font-size: 30px;
       letter-spacing: -0.5px;
     }
     .cv1-title {
@@ -332,25 +332,14 @@
       line-height: 1.6;
       max-width: 100%;
     }
-    /* reorder: experience & education surface first, contact/skills sidebar follows as reference */
     .cv1-body {
-      display: flex;
-      flex-direction: column;
-      grid-template-columns: unset;
-    }
-    .cv1-main {
-      order: 1;
-      padding: 24px 20px 8px;
+      grid-template-columns: 1fr;
     }
     .cv1-sidebar {
-      order: 2;
-      padding: 22px 20px 28px;
-      border-top: 1px solid #4a2d1a;
-      margin-top: 8px;
+      padding: 24px 20px;
     }
-    /* sidebar becomes a denser two-column reference block since it's now secondary */
-    .cv1-sidebar .cv1-s-block {
-      margin-bottom: 20px;
+    .cv1-main {
+      padding: 26px 20px;
     }
     .cv1-s-item,
     .cv1-skill-list,
@@ -368,7 +357,7 @@
     }
     .cv1-section-title {
       font-size: 21px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
     .cv1-exp-grid,
     .cv1-footer-grid {
@@ -396,13 +385,14 @@
       font-size: 12px;
     }
     .cv1-section {
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
     .cv1-controls {
       top: 10px;
       right: 10px;
       gap: 6px;
     }
+    /* tilt is a hover-only effect: pointless on touch, so hide the toggle */
     #tiltToggleBtn {
       display: none;
     }

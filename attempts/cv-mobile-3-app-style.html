@@ -289,7 +289,7 @@
     display: inline-block;
   }
 
-  /* ==== VARIANT 2: Priority Reorder — experience first, sidebar as scannable footer ==== */
+  /* ==== VARIANT 3: App-Style — sticky compact header, bottom action bar ==== */
   @media (max-width: 768px) {
     html, body {
       height: auto;
@@ -300,7 +300,8 @@
       width: 100%;
       overflow: visible;
       align-items: flex-start;
-      padding: 16px 12px 32px;
+      justify-content: flex-start;
+      padding: 0 0 90px;
       perspective: none;
     }
     .cv1-tilt-wrap {
@@ -310,47 +311,46 @@
     .cv1-holo {
       display: none;
     }
+    .cv1-scale-wrap {
+      width: 100%;
+    }
     .cv1 {
       max-width: 100%;
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(44, 26, 14, 0.18);
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
     }
+    /* header pins to the top while scrolling, so identity stays visible */
     .cv1-header {
-      padding: 26px 20px 22px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 20px 14px;
+      overflow: hidden;
     }
     .cv1-name {
-      font-size: 29px;
-      letter-spacing: -0.5px;
+      font-size: 22px;
+      letter-spacing: -0.3px;
     }
     .cv1-title {
-      font-size: 13px;
-      letter-spacing: 1.5px;
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      margin: 4px 0 8px;
     }
     .cv1-tagline {
-      font-size: 13px;
-      line-height: 1.6;
+      font-size: 12px;
+      line-height: 1.55;
       max-width: 100%;
     }
-    /* reorder: experience & education surface first, contact/skills sidebar follows as reference */
     .cv1-body {
-      display: flex;
-      flex-direction: column;
-      grid-template-columns: unset;
-    }
-    .cv1-main {
-      order: 1;
-      padding: 24px 20px 8px;
+      grid-template-columns: 1fr;
     }
     .cv1-sidebar {
-      order: 2;
-      padding: 22px 20px 28px;
-      border-top: 1px solid #4a2d1a;
-      margin-top: 8px;
+      padding: 22px 20px;
     }
-    /* sidebar becomes a denser two-column reference block since it's now secondary */
-    .cv1-sidebar .cv1-s-block {
-      margin-bottom: 20px;
+    .cv1-main {
+      padding: 24px 20px;
     }
     .cv1-s-item,
     .cv1-skill-list,
@@ -367,16 +367,16 @@
       padding: 3px 8px;
     }
     .cv1-section-title {
-      font-size: 21px;
+      font-size: 20px;
       margin-bottom: 18px;
     }
     .cv1-exp-grid,
     .cv1-footer-grid {
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 18px;
     }
     .cv1-exp-role {
-      font-size: 15px;
+      font-size: 14px;
     }
     .cv1-exp-place {
       font-size: 13px;
@@ -386,7 +386,7 @@
     }
     .cv1-exp-desc {
       font-size: 13px;
-      line-height: 1.8;
+      line-height: 1.75;
     }
     .cv1-edu-degree {
       font-size: 14px;
@@ -398,17 +398,31 @@
     .cv1-section {
       margin-bottom: 26px;
     }
+    /* controls move from a floating top pill row to a fixed bottom action bar */
     .cv1-controls {
-      top: 10px;
-      right: 10px;
-      gap: 6px;
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      gap: 8px;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(44, 26, 14, 0.92);
+      backdrop-filter: blur(6px);
+      border-top: 1px solid #c05c2a;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25);
     }
     #tiltToggleBtn {
       display: none;
     }
     .cv1-pill-btn {
-      padding: 8px 12px;
-      font-size: 11px;
+      flex: 1;
+      text-align: center;
+      padding: 12px 14px;
+      font-size: 13px;
+      border-radius: 10px;
     }
   }
 </style>
