@@ -339,7 +339,7 @@
 <div class="cv1-controls">
   <button class="cv1-pill-btn" id="tiltToggleBtn">⏣ Tilt: ON</button>
   <button class="cv1-pill-btn" id="langToggleBtn">FR / EN</button>
-  <a class="cv1-pill-btn cv1-download-btn" id="downloadBtn" href="CV_FR.pdf" download="CV_AzAz_FR.pdf">⭳ Télécharger</a>
+  <a class="cv1-pill-btn cv1-download-btn" id="downloadBtn" href="CV_ASSAD_Jezebel_FR.pdf" download="CV_ASSAD_Jezebel_FR.pdf">⭳ Télécharger</a>
 </div>
 
 <div class="cv1-page" id="cv1-page" data-lang="fr">
@@ -660,7 +660,7 @@
     let tiltEnabled = true;
 
     // max tilt angle (degrees)
-    const maxTilt = 1.69;
+    const maxTilt = 2.69;
 
     function updateButton() {
       toggleBtn.textContent = tiltEnabled ? " Tilt: ON" : " Tilt: OFF";
@@ -713,12 +713,12 @@
       htmlEl.setAttribute("lang", lang);
       langBtn.textContent = lang === "fr" ? "FR / EN" : "EN / FR";
       if (lang === "fr") {
-        downloadBtn.href = "CV_FR.pdf";
-        downloadBtn.setAttribute("download", "CV_AzAz_FR.pdf");
+        downloadBtn.href = "CV_ASSAD_Jezebel_FR.pdf";
+        downloadBtn.setAttribute("download", "CV_ASSAD_Jezebel_FR.pdf");
         downloadBtn.textContent = "⭳ Télécharger";
       } else {
-        downloadBtn.href = "CV_EN.pdf";
-        downloadBtn.setAttribute("download", "CV_AzAz_EN.pdf");
+        downloadBtn.href = "CV_ASSAD_Jezebel_EN.pdf";
+        downloadBtn.setAttribute("download", "CV_ASSAD_Jezebel_EN.pdf");
         downloadBtn.textContent = "⭳ Download";
       }
       // content size may change after translation swap -> refit
